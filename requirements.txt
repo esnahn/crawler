@@ -1,0 +1,31 @@
+wheel
+
+notebook
+ipykernel
+
+black
+wcwidth
+tabulate[widechars]
+tqdm
+
+numpy
+pandas
+# SQLAlchemy
+# oracledb
+# pyarrow
+# dask
+
+# polars
+
+### excel handling
+xlsx2csv
+openpyxl
+xlrd  # xls
+
+# matplotlib>=3.6
+# seaborn
+
+requests
+beautifulsoup4
+lxml
+selenium
