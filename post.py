@@ -28,13 +28,19 @@ def pick_date(elem: WebElement, year: int, month: int, day: int):
     # pick the year
     elem = driver.find_element(By.CLASS_NAME, "ui-datepicker-year")
     select = Select(elem)
+    time.sleep(0.1)
+
     select.select_by_value(str(year))
+    time.sleep(0.1)
 
     # pick the month
     elem = driver.find_element(By.CLASS_NAME, "ui-datepicker-month")
     select = Select(elem)
+    time.sleep(0.1)
+
     # value starts at 0, 1 less than the month
     select.select_by_value(str(month - 1))
+    time.sleep(0.1)
 
     # pick the day
     # should click the right one, instead previous or next month's one
@@ -43,6 +49,7 @@ def pick_date(elem: WebElement, year: int, month: int, day: int):
         f"//table[@class='ui-datepicker-calendar']//td[not(contains(@class, 'ui-datepicker-other-month'))]//a[text()='{day}']",
     )
     elem.click()
+    time.sleep(0.1)
 
 
 def get_table(driver: WebDriver):
@@ -69,11 +76,18 @@ def get_table(driver: WebDriver):
 
     assert dfs[0].columns.tolist() == ["지역", "합계", "주거용", "상업용", "공업용", "문교사회용", "기타"]
     assert dfs[1].loc[1, 0] == "서울특별시"
-    assert dfs[1].loc[17, 0] == "제주특별자치도"
 
     df = dfs[1][1:]
     df.columns = dfs[0].columns.tolist()
-    return df
+
+    if df.iloc[7, 0] == "세종특별자치시":
+        return df
+    else:
+        df_sejong = pd.DataFrame(
+            {k: v for k, v in zip(df.columns.tolist(), ["세종특별자치시"] + [0] * 6)},
+            index=[7],
+        )
+        return pd.concat([df.iloc[:7], df_sejong, df.iloc[7:]]).reset_index(drop=True)
 
 
 def get_quarter(number):
@@ -113,7 +127,13 @@ def do_run(driver: WebDriver, year: int, month: int):
     # 기준년도
     elem = driver.find_element(By.ID, "data_day")
     select = Select(elem)
-    select.select_by_value(f"{year}_{quarter}")
+    if year >= 2013:
+        select.select_by_value(f"{year}_{quarter}")
+    elif year == 2012 and quarter >= 3:
+        select.select_by_value(f"{year}_{quarter}")
+    else:
+        # use 2012 2th q for older data
+        select.select_by_value(f"2012_2")
 
     # 조회기간
     elem = driver.find_element(By.ID, "day_s")
@@ -135,7 +155,7 @@ def do_run(driver: WebDriver, year: int, month: int):
     return get_table(driver)
 
 
-for year in range(2013, 2022 + 1):
+for year in range(2003, 2022 + 1):
     for month in range(1, 12 + 1):
         try:
             df = do_run(driver, year, month)
