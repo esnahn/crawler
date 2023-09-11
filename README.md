@@ -16,3 +16,5 @@ pip install -r .\requirements.txt
 restart vs code
 
 copy webdriver for selenium in the folder
+
+run `post.py`, `post_total.py`, `stat_pivot.py` in this order
