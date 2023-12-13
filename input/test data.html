@@ -1,0 +1,220 @@
+<!-- open login modal -->
+<button type="button" class="btn-login login-modal-btn login-area-before" data-toggle="modal" data-target="#login-modal"
+    style="" title="팝업창 열림">
+    <i class="icon-login"></i>로그인
+</button>
+
+<!-- login modal -->
+<div class="login-wp form-wp">
+    <!-- 아이디 -->
+    <!-- #login-user-id -->
+    <input autofocus="autofocus" type="text" class="form-control form-lg" id="login-user-id" title="이메일주소 입력"
+        placeholder="이메일(E-mail) 주소">
+    <!-- 비밀번호 -->
+    <div class="input-group v2">
+        <!-- #login-user-password -->
+        <input autocomplete="off" type="text" class="form-control form-lg" id="login-user-password" title="비밀번호 입력"
+            placeholder="비밀번호를 입력하세요.">
+        <span class="input-group-btn">
+            <button type="button" class="btn-eye active" id="btn-eye"
+                onclick="authManager.togglePw(this)"><!--class="active":비밀번호 보여주기-->
+                <i></i><span class="sr-only">비밀번호 보기</span>
+            </button>
+        </span>
+    </div>
+</div>
+
+<!-- after login -->
+<!-- login-area-after -->
+<button type="button" class="btn-my login-area-after" style="">
+    <i class="icon-my"></i><span class="login-my-name"></span>
+</button>
+
+<button type="button" class="btn-my login-area-after" style="display: none;">
+    <i class="icon-my"></i><span class="login-my-name"></span>
+</button>
+
+
+<!-- level 1 panels -->
+
+<!-- #collapse-step-1 -->
+<button type="button" id="collapse-step-1" class="btn-collap-group btn-collap open">
+    <input id="isTodayIssue" type="hidden" value="false">
+    <strong>STEP 01</strong> 뉴스 검색 - <span class="total-search-key"></span>
+</button>
+
+<button type="button" id="collapse-step-2" class="btn-collap-group btn-collap">
+    <strong>STEP 02</strong> 검색 결과
+</button>
+
+<button type="button" id="collapse-step-3" class="btn-collap-group btn-collap">
+    <strong>STEP 03</strong> 분석 결과 및 시각화
+</button>
+
+<!-- 4 states -->
+
+
+<!-- step 1 -->
+
+<!-- reset -->
+<button type="button" class="btn-reset btn-search clear-filter-btn search-filter-refresh">초기화</button>
+
+<!-- level 2 panels -->
+<!-- 언론사 #srch-tab2 -->
+<div id="srch-tab2" class="panel current" role="region" aria-hidden="false" aria-expanded="true"
+    style="display: block;">
+</div>
+
+<!-- 기간 #srch-tab1 -->
+<div id="srch-tab1" class="panel" role="region" aria-hidden="true" aria-expanded="false" style="display: none;">
+</div>
+
+
+<!-- pick media -->
+<!-- #전국일간지 -->
+<input type="checkbox" id="전국일간지" class="gubun-checkbox" value="10">
+<!-- #방송사 -->
+<input type="checkbox" id="방송사" class="gubun-checkbox" value="40">
+
+<!-- 검색 상태 #search-foot-div > div.srch-sort -->
+<div class="srch-sort" style="display: block;">
+    <span id="footersearch_searchDate"><i>2023-09-06 ~ 2023-12-06</i><button type="button"
+            onclick="removeSearchFooterDateObject();" class="btn-delete"><span
+                class="sr-only">삭제</span></button></span><span class="detailsearch-provider"
+        id="footersearch_01100101"><i>경향신문</i><button type="button" onclick="removeSearchFooterObj(경향신문);"
+            class="btn-delete detailsearch-provider"><span class="sr-only">삭제</span></button></span><span
+        class="detailsearch-provider" id="footersearch_01100201"><i>국민일보</i><button type="button"
+            onclick="removeSearchFooterObj(국민일보);" class="btn-delete detailsearch-provider"><span
+                class="sr-only">삭제</span></button></span><span class="detailsearch-provider"
+        id="footersearch_01100301"><i>내일신문</i><button type="button" onclick="removeSearchFooterObj(내일신문);"
+            class="btn-delete detailsearch-provider"><span class="sr-only">삭제</span></button></span><span
+        class="detailsearch-provider" id="footersearch_01100401"><i>동아일보</i><button type="button"
+            onclick="removeSearchFooterObj(동아일보);" class="btn-delete detailsearch-provider"><span
+                class="sr-only">삭제</span></button></span><span class="detailsearch-provider"
+        id="footersearch_01100501"><i>문화일보</i><button type="button" onclick="removeSearchFooterObj(문화일보);"
+            class="btn-delete detailsearch-provider"><span class="sr-only">삭제</span></button></span><span
+        class="detailsearch-provider" id="footersearch_01100611"><i>서울신문</i><button type="button"
+            onclick="removeSearchFooterObj(서울신문);" class="btn-delete detailsearch-provider"><span
+                class="sr-only">삭제</span></button></span><span class="detailsearch-provider"
+        id="footersearch_01100701"><i>세계일보</i><button type="button" onclick="removeSearchFooterObj(세계일보);"
+            class="btn-delete detailsearch-provider"><span class="sr-only">삭제</span></button></span><span
+        class="detailsearch-provider" id="footersearch_01100801"><i>조선일보</i><button type="button"
+            onclick="removeSearchFooterObj(조선일보);" class="btn-delete detailsearch-provider"><span
+                class="sr-only">삭제</span></button></span><span class="detailsearch-provider"
+        id="footersearch_01100901"><i>중앙일보</i><button type="button" onclick="removeSearchFooterObj(중앙일보);"
+            class="btn-delete detailsearch-provider"><span class="sr-only">삭제</span></button></span><span
+        class="detailsearch-provider" id="footersearch_01101001"><i>한겨레</i><button type="button"
+            onclick="removeSearchFooterObj(한겨레);" class="btn-delete detailsearch-provider"><span
+                class="sr-only">삭제</span></button></span><span class="detailsearch-provider"
+        id="footersearch_01101101"><i>한국일보</i><button type="button" onclick="removeSearchFooterObj(한국일보);"
+            class="btn-delete detailsearch-provider"><span class="sr-only">삭제</span></button></span><span
+        class="detailsearch-provider" id="footersearch_08100101"><i>KBS</i><button type="button"
+            onclick="removeSearchFooterObj(KBS);" class="btn-delete detailsearch-provider"><span
+                class="sr-only">삭제</span></button></span><span class="detailsearch-provider"
+        id="footersearch_08100201"><i>MBC</i><button type="button" onclick="removeSearchFooterObj(MBC);"
+            class="btn-delete detailsearch-provider"><span class="sr-only">삭제</span></button></span><span
+        class="detailsearch-provider" id="footersearch_08200101"><i>OBS</i><button type="button"
+            onclick="removeSearchFooterObj(OBS);" class="btn-delete detailsearch-provider"><span
+                class="sr-only">삭제</span></button></span><span class="detailsearch-provider"
+        id="footersearch_08100301"><i>SBS</i><button type="button" onclick="removeSearchFooterObj(SBS);"
+            class="btn-delete detailsearch-provider"><span class="sr-only">삭제</span></button></span><span
+        class="detailsearch-provider" id="footersearch_08100401"><i>YTN</i><button type="button"
+            onclick="removeSearchFooterObj(YTN);" class="btn-delete detailsearch-provider"><span
+                class="sr-only">삭제</span></button></span>
+</div>
+<!-- [
+"경향신문",
+"국민일보",
+"내일신문",
+"동아일보",
+"문화일보",
+"서울신문",
+"세계일보",
+"조선일보",
+"중앙일보",
+"한겨레",
+"한국일보",
+"KBS",
+"MBC",
+"OBS",
+"SBS",
+"YTN",
+] -->
+
+
+
+
+
+
+<!-- 기간 #srch-tab1 -->
+<div id="srch-tab1" class="panel" role="region" aria-hidden="true" aria-expanded="false" style="display: none;">
+</div>
+<!-- selected: class=current -->
+<div id="srch-tab1" class="panel current" role="region" aria-hidden="false" aria-expanded="true"
+    style="display: block;">
+</div>
+
+
+<!-- pick dates -->
+<!-- #search-begin-date -->
+<input type="text" id="search-begin-date" class="form-control input-date input-dateFrom hasDatepicker" title="달력보기"
+    placeholder="YYYY-MM-DD">
+<!-- #search-end-date -->
+<input type="text" id="search-end-date" class="form-control input-date input-dateTo hasDatepicker" title="달력보기"
+    placeholder="YYYY-MM-DD">
+
+<!-- 적용하기 -->
+<!-- //*[@id="search-foot-div"]/div[2]/button[2] -->
+<!-- #search-foot-div > div.foot-btn > button.btn.btn-search.news-search-btn.news-report-search-btn -->
+<button type="button" class="btn btn-search news-search-btn news-report-search-btn">적용하기</button>
+
+<!-- wait for loading page to disappear -->
+<!-- #collapse-step-2-body > div > div.data-result.loading-cont > div.news-loader.loading -->
+<div class="news-loader loading" style="display: none;">
+</div>
+
+
+<!-- #collapse-step-3 -->
+<button type="button" id="collapse-step-3" class="btn-collap-group btn-collap open">
+    <strong>STEP 03</strong> 분석 결과 및 시각화
+</button>
+
+
+<!-- select the download tab -->
+<ul class="dataStep-tab tab-primary d-block">
+    <!------------------- TODO --------------------->
+    <li class="active">
+        <!-- #analytics-preview-tab -->
+        <a id="analytics-preview-tab" href="#analytics-data-download" data-toggle="tab">데이터 다운로드</a>
+    </li>
+    <li><a id="analytics-network-tab" href="#analytics-network" data-toggle="tab">관계도 분석</a></li>
+    <li><a id="analytics-trend-tab" href="#analytics-keyword-trend" data-toggle="tab">키워드 트렌드</a></li>
+    <li><a id="analytics-relational-word-tab" href="#analytics-relational-words" data-toggle="tab">연관어 분석</a></li>
+    <li><a id="analytics-info-extract-tab" href="#analytics-info-extract" data-toggle="tab">정보 추출</a></li>
+</ul>
+
+<ul class="dataStep-tab tab-primary d-block">
+    <li class=""><a id="analytics-preview-tab" href="#analytics-data-download" data-toggle="tab">데이터 다운로드</a></li>
+    <li class="active"><a id="analytics-network-tab" href="#analytics-network" data-toggle="tab">관계도 분석</a></li>
+    <li><a id="analytics-trend-tab" href="#analytics-keyword-trend" data-toggle="tab">키워드 트렌드</a></li>
+    <li><a id="analytics-relational-word-tab" href="#analytics-relational-words" data-toggle="tab">연관어 분석</a></li>
+    <li><a id="analytics-info-extract-tab" href="#analytics-info-extract" data-toggle="tab">정보 추출</a></li>
+</ul>
+
+<!-- wait for loading page to disappear -->
+<!-- #analytics-data-download > div.data-down-scroll > div > div > div.news-loader.loading -->
+<div class="news-loader loading" style="display: none;">
+    <div style="position: absolute; top: 10%;">
+        <p>뉴스 데이터를 검색하고 있습니다.</p>
+    </div>
+</div>
+
+<!-- #analytics-data-download > div.btm-btn-wrp > button -->
+<button type="button" class="btn btn-wh ml-auto news-download-btn mobile-excel-download"><i class="icon-download"></i>엑셀
+    다운로드</button>
+
+
+<div class="srch-sort" style="display: block;">
+    <span id="footersearch_searchDate"><i>2023-09-08 ~ 2023-12-08</i><button type="button"
+            onclick="removeSearchFooterDateObject();" class="btn-delete"><span class="sr-only">삭제</span></button></span>
+</div>
