@@ -14,13 +14,14 @@ pandas
 # oracledb
 # pyarrow
 # dask
+fastparquet
 
 # polars
 
 ### excel handling
 xlsx2csv
 openpyxl
-xlrd  # xls
+xlrd  # for xls format
 
 # matplotlib>=3.6
 # seaborn
