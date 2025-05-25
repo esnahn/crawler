@@ -12,8 +12,8 @@ numpy
 pandas
 # SQLAlchemy
 # oracledb
-# pyarrow
-# dask
+pyarrow
+dask
 fastparquet
 
 # polars
@@ -23,8 +23,8 @@ xlsx2csv
 openpyxl
 xlrd  # for xls format
 
-# matplotlib>=3.6
-# seaborn
+matplotlib
+seaborn
 
 requests
 beautifulsoup4
